@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <assert.h>
 
+int SolveEquation_2(double a, double b, double c, double *x_1, double *x_2);
+
 const double EPSILON = 1E-4;
 //forswitch
 const int R1 = 1;

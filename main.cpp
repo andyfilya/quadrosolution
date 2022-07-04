@@ -1,13 +1,4 @@
 #include "head.h"
-
-int main()
-{
-    //coefficients 
-    double a = NAN, b = NAN, c = NAN;
-    //roots
-    double x_1 = NAN, x_2 = NAN;
-}
-
 //scancoefficients
 void Coef_scan(double *a, double *b, double *c)
 {
@@ -37,3 +28,39 @@ void Coef_scan(double *a, double *b, double *c)
 
 }
 
+void GiveAns(int counter_of_roots, double x_1, double x_2)
+{
+    assert(isfinite(x_1) && isfinite(x_2));
+    switch(counter_of_roots)
+    {
+        case R0:
+            printf("No roots.");
+            break;
+        case R1:
+            printf("One root: x = %.6lf\n", x_2);
+            break;
+        case R2:
+            printf("Two roots x1 = %.6lf x2 = %.6lf\n", x_1, x_2);
+            break;
+        case R3:
+            printf("Infinite roots");
+            break;
+        default:
+            printf("Error");
+            break;
+    }
+}
+
+int main()
+{
+    //coefficients 
+    double a = NAN, b = NAN, c = NAN;
+    //roots
+    double x_1 = NAN, x_2 = NAN;
+    Coef_scan(&a, &b, &c);
+    int count_of_roots = SolveEquation_2(a, b, c, &x_1, &x_2);
+    
+    GiveAns(count_of_roots, x_1, x_2);
+
+    return 0;
+}
