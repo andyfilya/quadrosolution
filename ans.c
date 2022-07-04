@@ -1,8 +1,12 @@
-#include <head.h>
-
-
-
+#include "head.h"
+bool Equal_2(double x, double y)
+{
+    assert(isfinite(x));
+    assert(isfinite(y));
+    return (fabs(x-y) < EPSILON);
+}
 bool Zero(double x)
 {
-    return (fabs(x) < EPSILON)
+    assert(isfinite(x));
+    return (fabs(x) < EPSILON);
 }
