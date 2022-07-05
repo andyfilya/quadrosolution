@@ -5,11 +5,11 @@ void Coef_scan(double *a, double *b, double *c)
     assert( a != NULL && b != NULL && c != NULL);
     assert( a != b && a != c && c != b);
     printf("You need to enter 3 coefficients a,b,c\n");
+    char str_in[256] = ""; //for chars(in)
+    int counter_of_coef = 0; //for errors
+    int counter_of_attempts = 0; //for cicles
     while (1 == 1)
     {
-        char str_in[256] = ""; //for chars(in)
-        int counter_of_coef = 0; //for errors
-        int counter_of_attempts = 0; //for cicles
         counter_of_coef = scanf("%lf %lf %lf", a, b, c);
         if(counter_of_coef != 3)
         {
