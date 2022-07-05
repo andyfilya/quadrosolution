@@ -3,6 +3,7 @@
 void Coef_scan(double *a, double *b, double *c)
 {
     assert( a != NULL && b != NULL && c != NULL);
+    assert( a != b && a != c && c != b);
     printf("You need to enter 3 coefficients a,b,c\n");
     while (1 == 1)
     {
@@ -30,7 +31,7 @@ void Coef_scan(double *a, double *b, double *c)
 
 void GiveAns(int counter_of_roots, double x_1, double x_2)
 {
-    assert(isfinite(x_1) && isfinite(x_2));
+    //assert(isfinite(x_1) && isfinite(x_2));
     switch(counter_of_roots)
     {
         case R0:

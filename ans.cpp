@@ -10,11 +10,26 @@ bool Equal_2(double x, double y)
     assert(isfinite(y));
     return Zero(x-y);
 }
-//a != 0
+int SolveEquation_1(double b, double c, double *x_2)
+{
+    assert(isfinite(b) && isfinite(c));
+    assert(x_2 != NULL);
+    if (Zero(b))
+    {
+        if(Zero(c))
+        {
+            return R3;
+        }
+        return R0;
+    }
+    *x_2 = (-c) / b;
+    return R1;
+}
 int SolveEquation_2(double a, double b, double c, double *x_1, double *x_2)
 {
     assert(isfinite(a) && isfinite(b) && isfinite(c));
     assert(x_1 != NULL && x_2 != NULL);
+    assert(x_1 != x_2);
     if (Zero(a))
     {
         return SolveEquation_1(b, c, x_1);
@@ -35,19 +50,4 @@ int SolveEquation_2(double a, double b, double c, double *x_1, double *x_2)
         *x_2 = (-b - sqrt(D)) / (2 * a);
         return R2; 
     }
-}
-int SolveEquation_1(double b, double c, double *x_2)
-{
-    assert(isfinite(b) && isfinite(c));
-    assert(x_2 != NULL);
-    if (Zero(b))
-    {
-        if(Zero(c))
-        {
-            return R3;
-        }
-        return R0;
-    }
-    *x_2 = (-c) / b;
-    return R1;
 }

@@ -6,8 +6,8 @@
 
 int SolveEquation_2(double a, double b, double c, double *x_1, double *x_2);
 bool Equal_2(double x, double y);
-
 const double EPSILON = 1E-4;
+
 //forswitch
 const int R1 = 1;
 const int R2 = 2;
