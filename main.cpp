@@ -1,4 +1,14 @@
+/*!
+\file
+\brief this is the main file from which the entire program starts running
+*/
+
+
 #include "head.h"
+
+/*!
+ * \brief Launch the program
+ */
 
 int main()
 {
