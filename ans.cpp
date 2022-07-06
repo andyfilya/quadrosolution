@@ -57,18 +57,22 @@ void Coef_scan(double *a, double *b, double *c)
 {
     assert( a != NULL && b != NULL && c != NULL);
     assert( a != b && a != c && c != b);
+
     printf("You need to enter 3 coefficients a,b,c\n");
+    
     char str_in[256] = ""; //for chars(in)
     int counter_of_coef = 0; //for errors
     int counter_of_attempts = 0; //for cicles
+
     while (1)
     {
         counter_of_coef = scanf("%lf %lf %lf", a, b, c);
         if(counter_of_coef != 3)
         {
+            printf("You have to enter numbers, not letters\n");
             scanf("%255s\n", str_in);
-            counter_of_attempts += 1;
-            if (counter_of_attempts > 2)
+            counter_of_attempts++;
+            if (counter_of_attempts == 3)
             {
                 printf("Incorrectly values");
                 exit(1);
@@ -84,7 +88,7 @@ void Coef_scan(double *a, double *b, double *c)
 
 void GiveAns(int counter_of_roots, double x_1, double x_2)
 {
-    //assert(isfinite(x_1) && isfinite(x_2));
+   // assert(isfinite(x_1) && isfinite(x_2));
     switch(counter_of_roots)
     {
         case R0:
