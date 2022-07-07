@@ -4,23 +4,11 @@
 */
 
 #include "head.h"
-/*!
- * \brief this function says if number is zero
- *
- * \param[in] x - number, which we want to compare with zero
- * \return true if number is equal to zero
- */
 
 bool Zero(double x)
 {
     return (fabs(x) < EPSILON);
 }
-/*!
- * \brief this function checks two numbers is equal
- * 
- * \param[in] x, y - numbers which we want to comare
- * \return true if two numbers is equal
- */
 
 bool Equal_2(double x, double y)
 {
@@ -28,20 +16,11 @@ bool Equal_2(double x, double y)
     assert(isfinite(y));
     return Zero(x-y);
 }
-/*!
- * \brief Solves Linear Equation (when coefficient a = 0)
- *
- * Solve equation 0*a + bx + c = 0 -> bx + c = 0
- * \param[in] b - coefficient of quadratic equation
- * \param[in] c - coefficient of quadratic equation
- * \param[out] x_2 - root of linear equation
- * \return count of roots, if return R3 - inf roots
- */
 
-int SolveLinear(double b, double c, double *x_2)
+int SolveLinear(double b, double c, double *x_1)
 {
     assert(isfinite(b) && isfinite(c));
-    assert(x_2 != NULL);
+    assert(x_1 != NULL);
     if (Zero(b))
     {
         if(Zero(c))
@@ -50,20 +29,9 @@ int SolveLinear(double b, double c, double *x_2)
         }
         return R0;
     }
-    *x_2 = (-c) / b;
+    *x_1 = (-c) / b;
     return R1;
 }
-/*!
- * \brief Solves Quadratic Equation
- *
- * solve quadratic equation ax^2 + bx + c = 0 (a != 0)
- * \param[in] a - coefficient in quadratic equation
- * \param[in] b - coefficient in quadratic equation
- * \param[in] c - coefficient in quadratic equation
- * \param[out] x_1 - root of quadratic equation
- * \param[out] x_2 - root of quadratic equation
- * \return counter of roots
- */
 
 int SolveQuadratic(double a, double b, double c, double *x_1, double *x_2)
 {
@@ -81,7 +49,7 @@ int SolveQuadratic(double a, double b, double c, double *x_1, double *x_2)
     }
     if (Zero(D))
     {
-        *x_2 = (-b) / (2 * a);
+        *x_1 = (-b) / (2 * a);
         return R1;
     }
     if (D > 0)
@@ -91,13 +59,6 @@ int SolveQuadratic(double a, double b, double c, double *x_1, double *x_2)
         return R2; 
     }
 }
-
-/*!
- * \brief this function scans the coefficients from quadratic equation
- *
- *  the function accepts coefficients and says that you need to enter
- *  \param[out] a, b, c - the coefficient quadratic equation ax^2 + bx + c = 0
- */
 
 void Coef_scan(double *a, double *b, double *c)
 {
@@ -120,7 +81,7 @@ void Coef_scan(double *a, double *b, double *c)
             counter_of_attempts++;
             if (counter_of_attempts == 3)
             {
-                printf("Incorrectly values");
+                printf("Incorrectly values\n");
                 exit(1);
             }
         }
@@ -131,35 +92,25 @@ void Coef_scan(double *a, double *b, double *c)
     }
 
 }
-/*!
- * \brief this function gives the answer about the solution of the quadratic equation
- * 
- * GiveAns accepts the counter_of_roots variable and answers the question of the task
- * Prints roots
- * \param[in] counter_of_roots - count of the roots
- * \param[in] x_1 - first root
- * \param[in] x_2 - second root
- */
 
 void GiveAns(int counter_of_roots, double x_1, double x_2)
 {
-   // assert(isfinite(x_1) && isfinite(x_2));
     switch(counter_of_roots)
     {
         case R0:
-            printf("No roots.");
+            printf("No roots.\n");
             break;
         case R1:
-            printf("One root: x = %.6lf\n", x_2);
+            printf("One root: x = %.3lf\n", x_1);
             break;
         case R2:
-            printf("Two roots x1 = %.6lf x2 = %.6lf\n", x_1, x_2);
+            printf("Two roots x1 = %.3lf x2 = %.3lf\n", x_1, x_2);
             break;
         case R3:
-            printf("Infinite roots");
+            printf("Infinite roots\n");
             break;
         default:
-            printf("Error");
+            printf("Error\n");
             break;
     }
 }
