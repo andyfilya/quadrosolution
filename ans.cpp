@@ -42,7 +42,9 @@ int SolveQuadratic(double a, double b, double c, double *x_1, double *x_2)
     {
         return SolveLinear(b, c, x_1);
     }
+
     double D = b * b - 4 * a * c;
+    
     if (D < 0)
     {
         return R0;
