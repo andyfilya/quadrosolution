@@ -21,12 +21,10 @@ int main(int argc, const char *argv[])
     
     if(argc > 1)
     {
-        const char *InputParam = "-t";
-
         if(!strcmp(argv[1], "-t"))
         {
             bool res = func_of_test();
-            
+
             if(res == true) printf("OK\n");
             else printf("Not OK\n");
         }
